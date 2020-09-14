@@ -17,7 +17,7 @@ import smtplib
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 import os
-
+from pathlib import Path
 
 g_login = GoogleAuth()
 
@@ -35,7 +35,11 @@ else:
 g_login.SaveCredentialsFile("mycreds.txt")
 #g_login.LocalWebserverAuth()
 drive = GoogleDrive(g_login)
-output_dir =  r'C:\Udemy\asiangowild\image'
+
+
+Path(r"image").mkdir(exist_ok=True)
+current_directory = os.getcwd()
+output_dir= os.path.join(current_directory,'image')
 
 fileList = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
 
