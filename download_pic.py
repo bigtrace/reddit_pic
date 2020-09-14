@@ -182,7 +182,7 @@ def download_posts(first_post_id,page):
     return id,page+1
 
 page = 1
-for each in range(10):
+for each in range(5):
 
     print(f'page： {page}')
     first_post_id,page = download_posts(first_post_id,page)
