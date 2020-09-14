@@ -19,6 +19,11 @@ from pydrive.drive import GoogleDrive
 import os
 from pathlib import Path
 
+# set current working directory as the same of this file
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 g_login = GoogleAuth()
 
 g_login.LoadCredentialsFile("mycreds.txt")
@@ -40,6 +45,12 @@ drive = GoogleDrive(g_login)
 Path(r"image").mkdir(exist_ok=True)
 current_directory = os.getcwd()
 output_dir= os.path.join(current_directory,'image')
+
+
+
+
+
+
 
 fileList = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
 
